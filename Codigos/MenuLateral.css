@@ -1,0 +1,20 @@
+QListWidget {
+    outline: 0;
+    font-size: 15px;
+    border-style: hidden;
+    background-color: rgb(100, 100, 100);
+}
+
+QListWidget::item {
+    color: white;
+    padding: 10px;
+    border-bottom: 1px solid rgb(70, 70, 70);
+}
+
+QListWidget::item:selected {
+    background-color: rgb(0, 200, 220);
+}
+
+QListWidget::text {
+    left: 10px;
+}

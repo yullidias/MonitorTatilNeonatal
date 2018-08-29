@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - ProjetoNeonatal@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="ProjetoNeonatal">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <table id="7" parent="2" name="dispositivos"/>
+    <table id="8" parent="2" name="incubadoras"/>
+    <table id="9" parent="2" name="incubadoras_dispositivos"/>
+    <table id="10" parent="2" name="incubadoras_sensores"/>
+    <table id="11" parent="2" name="informacaoes"/>
+    <table id="12" parent="2" name="neonatos"/>
+    <table id="13" parent="2" name="neonatos_incubadoras"/>
+    <table id="14" parent="2" name="portas"/>
+    <table id="15" parent="2" name="responsaveis"/>
+    <table id="16" parent="2" name="sensores"/>
+    <table id="17" parent="2" name="sinais"/>
+    <table id="18" parent="2" name="tipos"/>
+    <column id="19" parent="7" name="MAC">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="7" name="nome_dispositivos">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="21" parent="7" name="descricao">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="22" parent="7" name="status">
+      <Position>4</Position>
+      <DataType>tinyint(1)|0</DataType>
+    </column>
+    <column id="23" parent="7" name="ip_dispositivo">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <key id="24" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>MAC</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="25" parent="8" name="id_incubadora">
+      <Position>1</Position>
+      <DataType>char(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="8" name="nome_incubadora">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="27" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_incubadora</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="28" parent="9" name="id_incubadora">
+      <Position>1</Position>
+      <DataType>char(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="9" name="MAC">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="30" parent="9" name="Relationship7">
+      <ColNames>MAC</ColNames>
+    </index>
+    <key id="31" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_incubadora
+MAC</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="32" parent="9" name="Relationship6">
+      <ColNames>id_incubadora</ColNames>
+      <RefSchemaName>ProjetoNeonatal</RefSchemaName>
+      <RefTableName>incubadoras</RefTableName>
+      <RefColNames>id_incubadora</RefColNames>
+    </foreign-key>
+    <foreign-key id="33" parent="9" name="Relationship7">
+      <ColNames>MAC</ColNames>
+      <RefSchemaName>ProjetoNeonatal</RefSchemaName>
+      <RefTableName>dispositivos</RefTableName>
+      <RefColNames>mac</RefColNames>
+    </foreign-key>
+    <column id="34" parent="10" name="id_incubadora">
+      <Position>1</Position>
+      <DataType>char(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="10" name="id_i2c_sensor">
+      <Position>2</Position>
+      <DataType>varchar(8)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="36" parent="10" name="Relationship5">
+      <ColNames>id_i2c_sensor</ColNames>
+    </index>
+    <key id="37" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_incubadora
+id_i2c_sensor</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="38" parent="10" name="Relationship4">
+      <ColNames>id_incubadora</ColNames>
+      <RefSchemaName>ProjetoNeonatal</RefSchemaName>
+      <RefTableName>incubadoras</RefTableName>
+      <RefColNames>id_incubadora</RefColNames>
+    </foreign-key>
+    <foreign-key id="39" parent="10" name="Relationship5">
+      <ColNames>id_i2c_sensor</ColNames>
+      <RefSchemaName>ProjetoNeonatal</RefSchemaName>
+      <RefTableName>sensores</RefTableName>
+      <RefColNames>id_i2c_sensor</RefColNames>
+    </foreign-key>
+    <column id="40" parent="11" name="id_informacao">
+      <Position>1</Position>
+      <DataType>char(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="11" name="dado">
+      <Position>2</Position>
+      <DataType>double|0</DataType>
+    </column>
+    <column id="42" parent="11" name="id_sinal">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="43" parent="11" name="IX_Relationship10">
+      <ColNames>id_sinal</ColNames>
+    </index>
+    <key id="44" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_informacao</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="11" name="Relationship10">
+      <ColNames>id_sinal</ColNames>
+      <RefSchemaName>ProjetoNeonatal</RefSchemaName>
+      <RefTableName>sinais</RefTableName>
+      <RefColNames>id_sinal</RefColNames>
+    </foreign-key>
+    <column id="46" parent="12" name="idNeonato">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="12" name="nome_neonato">
+      <Position>2</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="48" parent="12" name="data_nascimento">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="49" parent="12" name="CPF">
+      <Position>4</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="50" parent="12" name="IX_Relationship121312">
+      <ColNames>CPF</ColNames>
+    </index>
+    <key id="51" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idNeonato</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="52" parent="12" name="Relationship1">
+      <ColNames>CPF</ColNames>
+      <RefSchemaName>ProjetoNeonatal</RefSchemaName>
+      <RefTableName>responsaveis</RefTableName>
+      <RefColNames>cpf</RefColNames>
+    </foreign-key>
+    <column id="53" parent="13" name="idNeonato">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="13" name="id_incubadora">
+      <Position>2</Position>
+      <DataType>char(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="13" name="data_entrada">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="13" name="data_saida">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <index id="57" parent="13" name="Relationship3">
+      <ColNames>id_incubadora</ColNames>
+    </index>
+    <key id="58" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idNeonato
+id_incubadora
+data_entrada</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="59" parent="13" name="Relationship2">
+      <ColNames>idNeonato</ColNames>
+      <RefSchemaName>ProjetoNeonatal</RefSchemaName>
+      <RefTableName>neonatos</RefTableName>
+      <RefColNames>idneonato</RefColNames>
+    </foreign-key>
+    <foreign-key id="60" parent="13" name="Relationship3">
+      <ColNames>id_incubadora</ColNames>
+      <RefSchemaName>ProjetoNeonatal</RefSchemaName>
+      <RefTableName>incubadoras</RefTableName>
+      <RefColNames>id_incubadora</RefColNames>
+    </foreign-key>
+    <column id="61" parent="14" name="id_porta">
+      <Position>1</Position>
+      <DataType>char(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="14" name="num_porta">
+      <Position>2</Position>
+      <DataType>int(6)|0</DataType>
+    </column>
+    <column id="63" parent="14" name="desc_sinal">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="64" parent="14" name="MAC">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="65" parent="14" name="IX_Relationship8">
+      <ColNames>MAC</ColNames>
+    </index>
+    <key id="66" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_porta</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="67" parent="14" name="Relationship8">
+      <ColNames>MAC</ColNames>
+      <RefSchemaName>ProjetoNeonatal</RefSchemaName>
+      <RefTableName>dispositivos</RefTableName>
+      <RefColNames>mac</RefColNames>
+    </foreign-key>
+    <column id="68" parent="15" name="CPF">
+      <Position>1</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="15" name="RG">
+      <Position>2</Position>
+      <DataType>varchar(15)|0</DataType>
+    </column>
+    <column id="70" parent="15" name="nome_responsavel">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <key id="71" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CPF</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="72" parent="16" name="id_i2c_sensor">
+      <Position>1</Position>
+      <DataType>varchar(8)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="73" parent="16" name="nome_sensor">
+      <Position>2</Position>
+      <DataType>varchar(25)|0</DataType>
+    </column>
+    <key id="74" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_i2c_sensor</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="75" parent="17" name="id_sinal">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="76" parent="17" name="data_aquisicao">
+      <Position>2</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="77" parent="17" name="data_entrada">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="78" parent="17" name="id_i2c_sensor">
+      <Position>4</Position>
+      <DataType>varchar(8)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="79" parent="17" name="IX_Relationship2">
+      <ColNames>data_entrada</ColNames>
+    </index>
+    <index id="80" parent="17" name="IX_Relationship9">
+      <ColNames>id_i2c_sensor</ColNames>
+    </index>
+    <key id="81" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_sinal</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="82" parent="17" name="Relationship9">
+      <ColNames>id_i2c_sensor</ColNames>
+      <RefSchemaName>ProjetoNeonatal</RefSchemaName>
+      <RefTableName>sensores</RefTableName>
+      <RefColNames>id_i2c_sensor</RefColNames>
+    </foreign-key>
+    <column id="83" parent="18" name="id_tipo">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="84" parent="18" name="nome_tipo">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="85" parent="18" name="id_informacao">
+      <Position>3</Position>
+      <DataType>char(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="86" parent="18" name="IX_Relationship11">
+      <ColNames>id_informacao</ColNames>
+    </index>
+    <key id="87" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_tipo</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="88" parent="18" name="Relationship11">
+      <ColNames>id_informacao</ColNames>
+      <RefSchemaName>ProjetoNeonatal</RefSchemaName>
+      <RefTableName>informacaoes</RefTableName>
+      <RefColNames>id_informacao</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
