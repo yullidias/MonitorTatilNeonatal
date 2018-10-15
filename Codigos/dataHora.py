@@ -18,5 +18,4 @@ class DataHora(QtGui.QLabel):
     def showDataHora(self):
         data_hora = QtCore.QDateTime.currentDateTime()
         string = data_hora.toString('d MMMM yyyy, hh:mm').title()
-        string = '15 June 2018, 12:57'
         self.setText(string)
